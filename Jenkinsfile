@@ -18,10 +18,10 @@ pipeline {
     stage("Test") {
       steps {
         sh "bundle exec cucumber -p ci"
-        post{
-          always{
-                cucumber fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', sortingMethod: 'ALPHABETICAL'
-          }
+      }
+      post {
+        always {
+          cucumber fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', sortingMethod: 'ALPHABETICAL'
         }
       }
     }
